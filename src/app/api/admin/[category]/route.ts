@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 
 export async function GET(req: Request, { params }: { params: { category: string } }) {
-  const { category } = await params;
+  const { category } = params;
   
   try {
     let data;
@@ -20,7 +20,7 @@ export async function GET(req: Request, { params }: { params: { category: string
 }
 
 export async function POST(req: Request, { params }: { params: { category: string } }) {
-  const { category } = await params;
+  const { category } = params;
   const body = await req.json();
 
   try {
