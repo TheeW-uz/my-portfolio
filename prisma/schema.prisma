@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  message   String
+  createdAt DateTime @default(now())
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  techStack   String[]
+  liveLink    String?
+  githubLink  String?
+  imageUrl    String?
+  results     String?  // New: project results or impact
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+}
+
+model Achievement {
+  id          String   @id @default(cuid())
+  title       String
+  issuer      String
+  date        String?
+  link        String?
+  type        String   @default("Certificate") // Certificate, Presentation, Award
+  createdAt   DateTime @default(now())
+}
+
+model Experience {
+  id          String   @id @default(cuid())
+  company     String
+  role        String
+  duration    String
+  description String
+  createdAt   DateTime @default(now())
+}
+
+model Stat {
+  id        String   @id @default(cuid())
+  label     String
+  value     String
+  createdAt DateTime @default(now())
+}
+
+model HighScore {
+  id        String   @id @default(cuid())
+  nickname  String
+  score     Int
+  createdAt DateTime @default(now())
+}
