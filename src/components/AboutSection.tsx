@@ -2,10 +2,10 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, Palette, Trophy, Music, Ghost } from 'lucide-react';
+import { Book, Palette, Trophy, Ghost } from 'lucide-react';
 
 const interests = [
-  { icon: <Code className="text-primary" />, label: 'Coding' },
+  { icon: <Book className="text-primary" />, label: 'Reading' },
   { icon: <Trophy className="text-yellow-500" />, label: 'Football' },
   { icon: <Ghost className="text-secondary" />, label: 'Chess' },
   { icon: <Palette className="text-pink-500" />, label: 'Drawing' },
@@ -39,7 +39,7 @@ export default function AboutSection() {
                 scalability, and &quot;wow&quot; factor.
               </p>
               <p>
-                My philosophy is simple: <span className="text-white italic">&quot;Nah I&apos;d win&quot;</span>. 
+                My philosophy is simple: <span className="text-white italic">&quot;Obsession over Discipline&quot;</span>. 
                 I take on challenges that others find daunting and turn them into 
                 polished products.
               </p>
