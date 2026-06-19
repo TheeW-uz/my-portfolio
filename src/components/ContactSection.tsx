@@ -2,47 +2,23 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, Mail, MapPin, Phone, Code, CheckCircle, AlertCircle } from 'lucide-react';
+import { Send, Mail, MapPin, Phone, Code, CheckCircle } from 'lucide-react';
 
 export default function ContactSection() {
-  const [pending, setPending] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [errorMsg, setErrorMsg] = useState('');
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setPending(true);
-    setErrorMsg('');
-    
     const formData = new FormData(e.currentTarget);
-    const data = {
-      name: formData.get('name'),
-      email: formData.get('email'),
-      subject: formData.get('subject'),
-      message: formData.get('message'),
-      honeypot: formData.get('website'), // Honeypot field
-    };
+    const name = formData.get('name') as string;
+    const email = formData.get('email') as string;
+    const subject = formData.get('subject') as string;
+    const message = formData.get('message') as string;
 
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-
-      const result = await response.json();
-
-      if (response.ok) {
-        setSuccess(true);
-      } else {
-        setErrorMsg(result.error || 'Something went wrong. Please try again.');
-      }
-    } catch (error) {
-      console.error('Submission failed', error);
-      setErrorMsg('Failed to send message. Please check your connection.');
-    } finally {
-      setPending(false);
-    }
+    const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+    const mailtoLink = `mailto:abubakrfazliddinov768@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
+    setSuccess(true);
   };
 
   return (
@@ -144,15 +120,7 @@ export default function ContactSection() {
                   className="space-y-6 relative" 
                   onSubmit={handleSubmit}
                 >
-                  {errorMsg && (
-                    <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-2xl text-red-400 flex items-center gap-3">
-                      <AlertCircle size={20} />
-                      <p className="text-sm font-medium">{errorMsg}</p>
-                    </div>
-                  )}
-                  
-                  {/* Honeypot field to catch spam bots */}
-                  <input type="text" name="website" className="hidden" tabIndex={-1} autoComplete="off" />
+
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
@@ -195,26 +163,15 @@ export default function ContactSection() {
                       name="message"
                       rows={4}
                       required
-                      disabled={pending}
                       placeholder="Tell me about your project..."
-                      className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-primary transition-all outline-none resize-none disabled:opacity-50"
+                      className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-primary transition-all outline-none resize-none"
                     />
                   </div>
                   <button 
                     type="submit"
-                    disabled={pending}
-                    className="w-full py-5 bg-gradient rounded-2xl font-black text-lg shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-70 flex items-center justify-center gap-2"
+                    className="w-full py-5 bg-gradient rounded-2xl font-black text-lg shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
                   >
-                    {pending ? (
-                      <>
-                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                        SENDING...
-                      </>
-                    ) : (
-                      <>
-                        SEND MESSAGE <Send size={18} />
-                      </>
-                    )}
+                    SEND MESSAGE <Send size={18} />
                   </button>
                 </motion.form>
               )}
