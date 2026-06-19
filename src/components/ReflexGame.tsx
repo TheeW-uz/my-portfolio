@@ -43,16 +43,8 @@ export default function ReflexGame() {
     return () => clearInterval(timer);
   }, [gameState, timeLeft]);
 
-  const saveScore = async () => {
-    try {
-      await fetch('/api/scores', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ nickname, score }),
-      });
-    } catch (error) {
-      console.error('Failed to save score', error);
-    }
+  const saveScore = () => {
+    // Score display only — no backend
   };
 
   return (
