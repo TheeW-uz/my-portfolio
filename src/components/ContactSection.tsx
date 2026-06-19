@@ -105,7 +105,7 @@ export default function ContactSection() {
                   <h3 className="text-3xl font-bold">Message Sent!</h3>
                   <p className="text-gray-400 max-w-sm">Thank you for reaching out. I&apos;ve received your message and will get back to you shortly.</p>
                   <button 
-                    onClick={() => { setSuccess(false); setErrorMsg(''); }}
+                    onClick={() => setSuccess(false)}
                     className="mt-8 px-8 py-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all font-bold"
                   >
                     Send Another Message
@@ -131,7 +131,7 @@ export default function ContactSection() {
                         required
                         disabled={pending}
                         placeholder="Your Name"
-                        className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-primary transition-all outline-none disabled:opacity-50"
+                        className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-primary transition-all outline-none"
                       />
                     </div>
                     <div className="space-y-2">
@@ -142,7 +142,7 @@ export default function ContactSection() {
                         required
                         disabled={pending}
                         placeholder="your@email.com"
-                        className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-primary transition-all outline-none disabled:opacity-50"
+                        className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-primary transition-all outline-none"
                       />
                     </div>
                   </div>
@@ -154,7 +154,7 @@ export default function ContactSection() {
                       required
                       disabled={pending}
                       placeholder="Project Inquiry"
-                      className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-primary transition-all outline-none disabled:opacity-50"
+                      className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-primary transition-all outline-none"
                     />
                   </div>
                   <div className="space-y-2">
