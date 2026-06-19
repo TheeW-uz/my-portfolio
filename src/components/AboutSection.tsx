@@ -23,7 +23,7 @@ export default function AboutSection() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl md:text-5xl font-black mb-8 leading-tight">
-              A 16-Year-Old on a <br />
+              A 18-Year-Old on a <br />
               <span className="text-gradient">Digital Mission</span>
             </h2>
             <div className="space-y-6 text-gray-400 text-lg leading-relaxed">

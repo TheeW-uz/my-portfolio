@@ -26,7 +26,7 @@ export default function HeroSection() {
             Bit by Bit
           </h1>
           <p className="max-w-2xl mx-auto text-gray-400 text-lg md:text-xl mb-10 leading-relaxed">
-            I&apos;m <span className="text-white font-semibold">Abubakr</span>, a 16-year-old developer from Uzbekistan 
+            I&apos;m <span className="text-white font-semibold">Abubakr</span>, a 18-year-old developer from Uzbekistan 
             building premium digital experiences with a focus on speed, performance, and cutting-edge tech.
           </p>
 
