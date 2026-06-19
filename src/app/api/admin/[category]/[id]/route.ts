@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 
-export async function DELETE(req: Request, { params }: { params: { category: string, id: string } }) {
-  const { category, id } = params;
+export async function DELETE(req: Request, { params }: { params: Promise<{ category: string; id: string }> }) {
+  const { category, id } = await params;
 
   try {
     switch (category) {
